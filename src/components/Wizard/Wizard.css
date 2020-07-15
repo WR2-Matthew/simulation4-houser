@@ -1,0 +1,12 @@
+.wizardHolder {
+  height: 90vh;
+  width: 50vw;
+  background-color: #e5f4ec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wizLink {
+  text-decoration: none;
+}
