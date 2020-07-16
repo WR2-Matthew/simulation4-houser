@@ -1,60 +1,53 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Wizard.css';
 import { Link } from 'react-router-dom';
 
-class Wizard extends Component {
-  constructor() {
-    super();
+//Using hooks when I hit cancel how do i 'setState'??
 
-    this.state = {
-      property: '',
-      address: '',
-      city: '',
-      state: '',
-      zip: null
-    };
-  };
+export default Wizard => {
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  };
+  let [property, setProperty] = useState(''),
+    [address, setAddress] = useState(''),
+    [city, setCity] = useState(''),
+    [state, setLocation] = useState(''),
+    [zip, setZip] = useState(0)
 
-  render() {
-    const { property, address, city, state, zip } = this.state;
-    return (
-      <div className='wizardHolder'>
-        <div className='wizardHeader' >
-          <h1>Add New Listing</h1>
-          <Link to='/' className='wizLink' >
-            <button>Cancel</button>
-          </Link>
+  useEffect((prevProps, prevState) => {
+    console.log(property)
+  }, [property])
+
+  return (
+    <div className='wizardHolder'>
+      <div className='wizardHeader' >
+        <h1>Add New Listing</h1>
+        <Link to='/' className='wizLink' >
+          <button>Cancel</button>
+        </Link>
+      </div>
+
+      <div className='wizInputsHolder'>
+        <div>
+          <label>Property Name</label>
+          <input value={property} onChange={(e) => setProperty(e.target.value)} />
+
+          <label>Address</label>
+          <input value={address} onChange={(e) => setAddress(e.target.value)} />
         </div>
 
-        <div className='wizInputsHolder'>
-          <div>
-            <label>Property Name</label>
-            <input name='property' value={property} onChange={(e) => this.handleChange(e)} />
+        <div>
+          <label>City</label>
+          <input value={city} onChange={(e) => setCity(e.target.value)} />
 
-            <label>Address</label>
-            <input name='address' value={address} onChange={(e) => this.handleChange(e)} />
-          </div>
+          <label>State</label>
+          <input value={state} onChange={(e) => setLocation(e.target.value)} />
 
-          <div>
-            <label>City</label>
-            <input name='city' value={city} onChange={(e) => this.handleChange(e)} />
-
-            <label>State</label>
-            <input name='state' value={state} onChange={(e) => this.handleChange(e)} />
-
-            <label>Zip</label>
-            <input name='zip' value={zip} onChange={(e) => this.handleChange(e)} />
-          </div>
+          <label>Zip</label>
+          <input value={zip} onChange={(e) => setZip(e.target.value)} />
+        </div>
+        <div>
+          <button onClick={() => this.addHouse()}>Complete</button>
         </div>
       </div>
-    )
-  };
+    </div>
+  )
 };
-
-export default Wizard;

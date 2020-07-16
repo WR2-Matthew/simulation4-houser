@@ -1,7 +1,7 @@
 import { GET_HOUSES } from './constraints';
 
-initialState = {
-  houses: null
+const initialState = {
+  houses: []
 };
 
 export default function reducer(state = initialState, action) {

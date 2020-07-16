@@ -3,6 +3,7 @@ const massive = require('massive'),
   express = require('express'),
   app = express(),
   session = require('express-session'),
+  mainCtrl = require('./controller/MainController'),
   { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
 app.use(express.json());
@@ -23,5 +24,8 @@ massive({
 }).catch(err => {
   console.log(err)
 });
+
+app.get('/api/houses', mainCtrl.getHouses)
+app.delete('/api/houses/delete/:id', mainCtrl.deleteHouse)
 
 app.listen(SERVER_PORT, () => console.log(`We are running on port ${SERVER_PORT}`));
