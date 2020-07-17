@@ -16,13 +16,12 @@ class House extends Component {
     // console.log(id)
     axios
       .delete(`/api/houses/delete/${id}`)
-      .then(() => {
-        this.props.retrieve()
+      .then(res => {
+        this.props.retrieveHouses()
       })
   }
 
   render() {
-
     const { name, address, city, state, zip, id } = this.props
 
     return (

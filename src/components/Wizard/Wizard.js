@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Wizard.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 //Using hooks when I hit cancel how do i 'setState'??
 
-export default Wizard => {
+export default props => {
 
   let [property, setProperty] = useState(''),
     [address, setAddress] = useState(''),
@@ -15,6 +16,21 @@ export default Wizard => {
   useEffect((prevProps, prevState) => {
     console.log(property)
   }, [property])
+
+  function addHouse() {
+    console.log('hit')
+    const body = {
+      property,
+      address,
+      city,
+      state,
+      zip
+    }
+    // console.log(body)
+    axios
+      .post('/api/add/house', body)
+      .then(() => props.history.push('/'))
+  }
 
   return (
     <div className='wizardHolder'>
@@ -45,7 +61,7 @@ export default Wizard => {
           <input value={zip} onChange={(e) => setZip(e.target.value)} />
         </div>
         <div>
-          <button onClick={() => this.addHouse()}>Complete</button>
+          <button onClick={() => addHouse()}>Complete</button>
         </div>
       </div>
     </div>

@@ -27,5 +27,6 @@ massive({
 
 app.get('/api/houses', mainCtrl.getHouses)
 app.delete('/api/houses/delete/:id', mainCtrl.deleteHouse)
+app.post('/api/add/house', mainCtrl.addHouse)
 
 app.listen(SERVER_PORT, () => console.log(`We are running on port ${SERVER_PORT}`));

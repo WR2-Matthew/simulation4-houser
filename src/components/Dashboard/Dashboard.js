@@ -16,12 +16,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount = () => {
-    axios
-      .get('/api/houses')
-      .then(res => {
-        this.props.getHouses(res.data)
-        console.log(res.data)
-      })
+    this.retrieveHouses()
   }
 
   // componentDidUpdate = (prevProps, prevState) => {
@@ -38,7 +33,6 @@ class Dashboard extends Component {
   }
 
   render() {
-
     const { houses } = this.props;
     console.log(houses)
 
@@ -52,7 +46,7 @@ class Dashboard extends Component {
           state={e.state}
           zip={e.zip}
           id={e.id}
-          retrieve={this.retrieveHouses()}
+          retrieveHouses={this.retrieveHouses}
         />
       )
     })
