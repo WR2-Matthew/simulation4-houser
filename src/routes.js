@@ -9,9 +9,9 @@ import StepThree from './components/StepThree/StepThree';
 export default (
   <Switch>
     <Route exact path='/' component={Dashboard} />
+    <Route path='/wizard/step1' component={StepOne} />
+    <Route path='/wizard/step2' component={StepTwo} />
+    <Route path='/wizard/step3' component={StepThree} />
     <Route path='/wizard' component={Wizard} />
-    <Route path='/wizard/step#1' component={StepOne} />
-    <Route path='/wizard/step#2' component={StepTwo} />
-    <Route path='/wizard/step#3' component={StepThree} />
   </Switch>
 );

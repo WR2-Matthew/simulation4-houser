@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addingEstates } from '../../redux/actionCreators';
 
 const StepOne = props => {
 
@@ -12,6 +14,10 @@ const StepOne = props => {
   useEffect((prevProps, prevState) => {
     console.log(property)
   }, [property])
+
+  function houseInfo() {
+    props.addingEstates(property, address, city, state, zip)
+  };
 
   return (
     <div>
@@ -35,12 +41,12 @@ const StepOne = props => {
       </div>
 
       <div>
-        <Link to='/wizard/step#2' >
-          <button>Next Step</button>
+        <Link to='/wizard/step2' >
+          <button onClick={() => houseInfo()}>Next Step</button>
         </Link>
       </div>
     </div>
   )
 };
 
-export default StepOne;
+export default connect(null, { addingEstates })(StepOne);

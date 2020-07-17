@@ -17,7 +17,7 @@ const StepThree = props => {
       </div>
 
       <div>
-        <Link><button>Previous Step</button></Link>
+        <Link to='/wizard/step2'><button>Previous Step</button></Link>
         <button>Complete</button>
       </div>
     </div>

@@ -13,8 +13,8 @@ const StepTwo = props => {
       </div>
 
       <div>
-        <Link><button>Previous Step</button></Link>
-        <Link><button>Next Step</button></Link>
+        <Link to='/wizard/step1'><button>Previous Step</button></Link>
+        <Link to='/wizard/step3' ><button>Next Step</button></Link>
       </div>
     </div>
   )

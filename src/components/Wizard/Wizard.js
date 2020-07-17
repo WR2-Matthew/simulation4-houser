@@ -31,14 +31,9 @@ const Wizard = props => {
           <button>Cancel</button>
         </Link>
       </div>
-
       <div>
-        {routes}
-      </div>
-
-      <div>
-        <Link to='wizard/step#1'>
-          <button >Complete</button>
+        <Link to='/wizard/step1'>
+          <button >Next Step</button>
         </Link>
       </div>
     </div>
